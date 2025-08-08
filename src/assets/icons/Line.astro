@@ -1,0 +1,52 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 -150 10000 750"
+  class="w-full max-w-sm h-10"
+>
+  <defs>
+    <!-- Gradiente metálico para el corazón -->
+    <svg width="0" height="0" style="position: absolute; ">
+      <defs>
+        <linearGradient id="heart" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#FFC2E2"></stop>
+          <stop offset="20%" stop-color="#FFF"></stop>
+          <stop offset="40%" stop-color="#F2B2E2"></stop>
+          <stop offset="45%" stop-color="#FDC2E2"></stop>
+          <stop offset="55%" stop-color="#EEE"></stop>
+          <stop offset="80%" stop-color="#F2A3F6"></stop>
+          <stop offset="100%" stop-color="#F2B2E2"></stop>
+        </linearGradient>
+      </defs>
+    </svg>
+  </defs>
+  <!-- Línea dorada -->
+  <defs>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f9e79f"></stop>
+      <stop offset="20%" stop-color="#f1c40f"></stop>
+      <stop offset="40%" stop-color="#f7f56f"></stop>
+      <stop offset="45%" stop-color="#f2f26f"></stop>
+      <stop offset="80%" stop-color="#d4ac0d"></stop>
+      <stop offset="100%" stop-color="#b7950b"></stop>
+    </linearGradient>
+  </defs>
+  <defs>
+    <filter id="Drop-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow
+        dx="0"
+        dy="10"
+        stdDeviation="10"
+        flood-opacity="1"
+        flood-color="rgb(60, 0, 30)"></feDropShadow>
+    </filter>
+  </defs>
+  <path
+    d="m0 0 3500 0c500 0 750 0 1000 500-300-450-500-450-1000-450l-3500-50m5500 500c250-500 500-500 1000-500l0 0 3500 0-3500 50c-500 0-700 0-1000 450"
+    fill="url(#gold)"
+    filter="url(#Drop-shadow)"></path>
+  <!-- Corazón central -->
+  <path
+    d="M5000 600c-150-100-350-300-400-400-100-200 0-350 150-350 200 0 250 200 250 200 0 0 50-200 250-200 150 0 250 150 150 350-50 100-250 300-400 400Z"
+    fill="url(#heart)"
+    filter="url(#Drop-shadow)"></path>
+</svg>

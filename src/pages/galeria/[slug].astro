@@ -1,0 +1,112 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { queryDatoCMS } from "@lib/datocms";
+import "photoswipe/style.css";
+
+export async function getStaticPaths() {
+  console.log("Ejecutando getStaticPaths...");
+  const { allCategoryItems } = (await queryDatoCMS(`
+    query {
+      allCategoryItems {
+        slug
+      }
+    }
+  `)) as {
+    allCategoryItems: { slug: string }[];
+  };
+
+  return allCategoryItems.map((cat) => ({
+    params: { slug: cat.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+
+const { allCategoryItems } = (await queryDatoCMS(
+  `
+  query ObtenerCategoriaId($slug: String) {
+    allCategoryItems(filter: { slug: { eq: $slug } }) {
+      id
+    }
+  }
+`,
+  { slug }
+)) as {
+  allCategoryItems: { id: string }[];
+};
+
+if (allCategoryItems.length === 0) {
+  throw new Error(`No se encontró la categoría con slug: ${slug}`);
+}
+
+const categoriaId = allCategoryItems[0].id;
+
+const { allFotos } = (await queryDatoCMS(
+  `
+  query FotosPorCategoria($categoriaId: ItemId) {
+    allFotos(filter: { categorias: { eq: $categoriaId } }) {
+      tituloFoto
+      descriptions
+      foto {
+        url
+        width
+        height
+      }
+    }
+  }
+`,
+  { categoriaId }
+)) as {
+  allFotos: {
+    tituloFoto: string;
+    descriptions: string;
+    foto: { url: string; width: number; height: number };
+  }[];
+};
+---
+
+<Layout
+  title={`${slug}`}
+  description={`Explora las fotos de la categoría ${slug}.`}
+  canonical={`https://ailenbraga.com/galeria/${slug}`}
+>
+  <section
+    id="gallery"
+    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pt-20 pb-15 max-w-4xl will-change-transform"
+  >
+    {
+      allFotos.map((foto) => (
+        <a
+          href={foto.foto.url}
+          class="block pswp-img group shadow-lg shadow-[#2e0c1d8f] dark:hover:shadow-[#691c43] hover:scale-101 transition-transform hover:shadow-xl duration-200"
+          data-pswp-width={foto.foto.width}
+          data-pswp-height={foto.foto.height}
+          data-cropped="true"
+        >
+          <figure class="relative rounded-lg">
+            <img
+              src={`${foto.foto.url}?w=900&fm=webp&auto=compress`}
+              alt={foto.tituloFoto}
+              class="z-10 w-full h-auto object-cover aspect-[4/3]"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+        </a>
+      ))
+    }
+  </section>
+</Layout>
+<script>
+  import PhotoSwipeLightbox from "photoswipe/lightbox";
+
+  const lightbox = new PhotoSwipeLightbox({
+    gallery: "#gallery",
+    children: "a",
+    pswpModule: () => import("photoswipe"),
+    initialZoomLevel: "fit",
+    secondaryZoomLevel: 1.5,
+    maxZoomLevel: 1,
+  });
+  lightbox.init();
+</script>

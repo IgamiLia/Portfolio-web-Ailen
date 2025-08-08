@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="2505" fill="none">
+  <g clip-path="url(#a)" filter="url(#b)">
+    <mask
+      id="c"
+      width="1910"
+      height="3006"
+      x="5"
+      y="0"
+      maskUnits="userSpaceOnUse"
+      style="mask-type: luminance"
+    >
+      <path fill="#fff" d="M1915 0v3006H5V0h1910Z" />
+    </mask>
+    <g stroke-width="50" mask="url(#c)">
+      <path
+        stroke="#E4F4FF"
+        d="M3 2488c0 194 178 352 398 352s398-158 398-352c0-195-178-352-398-352S3 2293 3 2488Z"
+      />
+      <path
+        stroke="#F9DBFF"
+        d="M332 2139c0 281 258 508 575 508s575-227 575-508-258-509-575-509-575 228-575 509ZM1482 416c0 195 178 353 398 353 219 0 398-158 398-353 0-194-179-352-398-352-220 0-398 158-398 352Z"
+      />
+      <path
+        stroke="#E4F4FF"
+        d="M562 930c0 151 139 274 310 274s309-123 309-274-138-274-309-274-310 123-310 274Z"
+      />
+      <path
+        stroke="#FFDFEE"
+        d="M-113 366c0 238 217 431 486 431 268 0 486-193 486-431 0-237-218-430-486-430-269 0-486 193-486 430Zm1683 1278c0 151 139 274 310 274s309-123 309-274-138-274-309-274-310 123-310 274Z"
+      />
+      <path
+        stroke="#F9DBFF"
+        d="M-488 1210c0 152 138 274 309 274s310-122 310-274c0-151-139-274-310-274s-309 123-309 274Z"
+      />
+    </g>
+  </g>
+  <defs>
+    <clipPath id="a"><path fill="#fff" d="M1915 0v3006H5V0z" /></clipPath>
+    <filter
+      id="b"
+      width="2050"
+      height="3146"
+      x="-65"
+      y="-70"
+      color-interpolation-filters="sRGB"
+      filterUnits="userSpaceOnUse"
+    >
+      <feFlood flood-opacity="0" result="BackgroundImageFix" />
+      <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+      <feGaussianBlur result="effect1_foregroundBlur_26_2" stdDeviation="20" />
+    </filter>
+  </defs>
+</svg>

@@ -1,0 +1,60 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { queryDatoCMS } from "@lib/datocms";
+const { allCategoryItems } = (await queryDatoCMS(`
+  query {
+    allCategoryItems {
+      categoryTitles
+      slug
+      imagenPortada {
+        url
+        width
+        height
+      }
+    }
+  }
+`)) as {
+  allCategoryItems: {
+    categoryTitles: string;
+    slug: string;
+    imagenPortada: { url: string; width: number; height: number };
+  }[];
+};
+---
+
+<Layout
+  title="Galería"
+  description="Explora mi colección de fotografías profesionales, retratos, bodas y más."
+  canonical="https://ailenbraga.com/galeria"
+>
+  <div
+    class={`grid grid-cols-1 ${
+      allCategoryItems.length < 3
+        ? "md:grid-cols-2"
+        : "md:grid-cols-2 lg:grid-cols-3"
+    } gap-10 pt-24 pb-15 w-[80vw] lg:max-w-4xl will-change-transform`}
+  >
+    {
+      allCategoryItems.map((cat) => (
+        <article class="relative shadow-[#2e0c1d8f] transition-transform duration-200 will-change-transform hover:scale-101 hover:shadow-xl">
+          <a href={`/galeria/${cat.slug}`} class="block">
+            <div class="absolute bottom-0 py-2 pl-10 z-10 bg-gradient-to-t from-black/60 via-black/30 to-transparent w-full">
+              <h2 class="text-4xl pb-3 text-white opacity-90 font-bold capitalize tracking-wide">
+                {cat.categoryTitles}
+              </h2>
+            </div>
+            <img
+              src={`${cat.imagenPortada.url}?w=900&fm=webp&auto=compress`}
+              alt={cat.categoryTitles}
+              width={cat.imagenPortada.width}
+              height={cat.imagenPortada.height}
+              class="w-full h-auto object-fill aspect-[4/3] rounded-lg"
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
+        </article>
+      ))
+    }
+  </div>
+</Layout>

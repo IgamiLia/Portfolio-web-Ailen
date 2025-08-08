@@ -1,0 +1,44 @@
+---
+import "@styles/global.css";
+
+const { id } = Astro.props;
+---
+
+<section id={id} class="md:px-10 lg:px-0">
+  <h1
+    class="text-4xl text-center md:text-left font-bold mt-25 mb-10 md:mb-4 dark:text-shadow-[#a29970c5] dark:text-shadow-md"
+  >
+    Sobre mí
+  </h1>
+  <article
+    class="mt-15 md:mt-0 flex flex-col md:flex-row w-full text-1xl justify-center items-center md:items-stretch lg:gap-10 gap-5"
+  >
+    <div class="order-2 md:order-1 w-full h-full">
+      <div
+        class="mt-5 mx-auto md:mx-0 p-5 md:px-0 text-[17px] md:text-[18px] lg:text-[20px] [&>p]:mb-3 font-medium lg:leading-7.5 md:text-pretty md:mt-2 dark:text-shadow-[#2c2a1eaa] dark:text-shadow-md"
+      >
+        <p>
+          Soy <b>Ailén Joana Braga</b>, fotógrafa profesional y productora
+          audiovisual. Graduada en <b>Artes Digitales</b> por la <b
+            >Universidad Nacional de Quilmes</b
+          >.
+        </p>
+        <p>
+          trabajo de forma independiente creando fotografía artística, retratos,
+          campañas para marcas y cobertura de eventos.
+        </p>
+        <p>Cada proyecto nace desde una mirada estética y narrativa propia.</p>
+      </div>
+    </div>
+    <div
+      class="order-1 md:order-2 relative flex items-center justify-center w-xs"
+    >
+      <img
+        src="/pfp.jpg"
+        alt="ma"
+        class="relative z-10 size-[200px] transform rotate-10"
+      />
+      <span class="absolute size-[200px] bg-[#FFC2E2] dark:bg-[#360035]"></span>
+    </div>
+  </article>
+</section>

@@ -1,0 +1,217 @@
+@import "tailwindcss";
+@import "@fontsource/love-light";
+@plugin "tailwind-scrollbar";
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ACCESIBILIDAD */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+    cursor: url("/cursor-normal.cur"), auto;
+  }
+}
+
+/* ROOT Y TEMAS */
+@theme {
+  --font-signature: "Love Light", cursive;
+  --color-for-light: #5a002d;
+  --color-for-dark: #ffecf6;
+}
+:root {
+  color-scheme: light dark;
+  scroll-behavior: smooth;
+}
+.font-signature {
+  font-family: var(--font-signature);
+}
+
+/* HTML */
+html {
+  font-family: "Quicksand Variable", system-ui, sans-serif;
+}
+
+/* ANIMACIÓN CURSOR */
+html.clicking,
+html.clicking * {
+  cursor: url("/cursor-flash.cur"), auto !important;
+}
+
+/* BODY */
+body {
+  background-image: url("/background.svg");
+  background-size: cover;
+  cursor: url("/cursor-pink.cur"), auto;
+}
+
+body.dark::before,
+.dark body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("/background-dark.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: -1;
+}
+
+/* CURSOR */
+a,
+button {
+  cursor: url("/cursor-pointer-pink.cur"), pointer;
+}
+
+/* ANIMACIONES Y EFECTOS */
+@keyframes move-right {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+}
+
+.animate-move-right {
+  animation: move-right 1s infinite;
+}
+
+/* ENLACES CON GRADIENTE HEADER */
+.link-gradient-underline::after {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  height: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(
+    to right,
+    #b7950b00,
+    #b7950b,
+    #f1c40f,
+    #f9e79f,
+    #f1c40f,
+    #b7950b,
+    #b7950b00
+  );
+
+  transition: width 200ms ease;
+  -webkit-transition: width 200ms ease;
+  -moz-transition: width 200ms ease;
+  -ms-transition: width 200ms ease;
+  -o-transition: width 200ms ease;
+}
+
+.link-gradient-underline:hover::after {
+  width: 100%;
+}
+
+/* ENLACES CON GRADIENTE GALERÍA */
+.dark .link-gallery-underline::after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  height: 1.8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(
+    to right,
+    #00000000,
+    #fdf1f8,
+    #ffecf6,
+    #fdf1f8,
+    #00000000
+  );
+
+  transition: width 200ms ease;
+  -webkit-transition: width 200ms ease;
+  -moz-transition: width 200ms ease;
+  -ms-transition: width 200ms ease;
+  -o-transition: width 200ms ease;
+}
+
+.link-gallery-underline::after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  height: 1.8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(
+    to right,
+    #00000000,
+    #781848,
+    #5a002d,
+    #781848,
+    #00000000
+  );
+
+  transition: width 200ms ease;
+  -webkit-transition: width 200ms ease;
+  -moz-transition: width 200ms ease;
+  -ms-transition: width 200ms ease;
+  -o-transition: width 200ms ease;
+}
+.link-gallery-underline:hover::after {
+  width: 100%;
+}
+
+/* AJUSTES CUANDO EL HEADER SE ENCOGE */
+#mainHeader.shrink .link-gradient-underline::after {
+  bottom: 0.6rem !important;
+  height: 1.5px !important;
+}
+.link-gradient-text {
+  color: transparent;
+  background-image: linear-gradient(
+    to bottom right,
+    #b7950b,
+    #f1c40f,
+    #f1c40f,
+    #f7f56f,
+    #b7950b,
+    #f2f26f,
+    #d4ac0d,
+    #b7950b
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+#mainHeader.shrink {
+  max-height: 45px;
+}
+
+#mainHeader.shrink .shrink-logo-img {
+  height: 1.75rem;
+}
+
+#mainHeader.shrink .shrink-link {
+  padding-top: 0.5rem !important; /* py-2 */
+  padding-bottom: 0.5rem !important;
+}
+
+#mainHeader.shrink .shrink-links {
+  height: 45px;
+}
+
+#mainHeader.shrink .shrink-logo {
+  height: 45px;
+}
+
+#mainHeader.hide {
+  transform: translateY(-100%);
+  opacity: 0;
+}

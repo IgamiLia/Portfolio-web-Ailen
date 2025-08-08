@@ -1,0 +1,29 @@
+---
+import "@styles/global.css";
+import Instagram from "@assets/icons/Instagram.astro";
+import Facebook from "@assets/icons/Facebook.astro";
+import Gmail from "@assets/icons/Gmail.astro";
+import WhatsApp from "@assets/icons/Whatsapp.astro";
+import Line from "@assets/icons/Line.astro";
+const iconClass =
+  "size-10 text-ambar-800 transition-transform duration-200 ease-in-out hover:scale-115 hover:drop-shadow-[0_0_10px_rgba(235,235,111,1)] drop-shadow-[0_1.5px_1px_rgba(60,0,30,0.6)] dark:drop-shadow-[0_1px_20px_rgba(246,241,104,.5)]";
+---
+
+<footer
+  class="z-20 bg-bottom w-48 md:w-full h-35 flex flex-col justify-center items-center mt-20"
+>
+  <div class="flex flex-col items-center justify-center gap-5">
+    <div class="flex flex-row items-center justify-center gap-12">
+      <a href="/" class=""><Gmail class={iconClass} /></a>
+      <a href="/" class=""><Instagram class={iconClass} /></a>
+      <a href="/" class=""><Facebook class={iconClass} /></a>
+      <a href="/" class=""><WhatsApp class={iconClass} /></a>
+    </div>
+    <Line />
+    <span
+      class="text-center text-nowrap text-sm md:text-lg my-3 px-10 link-gradient-text drop-shadow-[0_1px_0.5px_rgba(60,0,30)] dark:drop-shadow-[0_1px_25px_rgba(246,241,104,.8)] text-shadow"
+    >
+      © 2025 Ailén Braga. Casi todos los derechos reservados
+    </span>
+  </div>
+</footer>

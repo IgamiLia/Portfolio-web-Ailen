@@ -1,0 +1,90 @@
+---
+import "@styles/global.css";
+import Bento from "@components/Bento.astro";
+import About from "@components/About.astro";
+---
+
+<section class="max-w-4xl mt-25 md:mt-30">
+  <div class="flex flex-col items-center h-full mb-35">
+    <img
+      src="/pfp.jpg"
+      alt="pfp"
+      class="h-auto w-[15rem] md:w-[18rem] lg:w-[23rem] aspect-[3/4] object-cover border-2 border-[#ffd621] dark:shadow-md shadow-lg rounded-xs shadow-[#2e0c1d8f] dark:shadow-[#e2c85257]"
+    />
+    <h1
+      class="font-signature text-center text-6xl md:text-7xl lg:text-8xl py-6 lg:py-5 px-10 link-gradient-text drop-shadow-[0_1px_0.5px_rgba(60,0,30)] dark:drop-shadow-[0_1px_25px_rgba(246,241,104,.8)] text-shadow"
+    >
+      Ailén Braga
+    </h1>
+    <p
+      class="font-medium text-center px-6 md:px-0 text-xl md:text-2xl lg:text-3xl mt-5 dark:text-shadow-[#a29970c5] dark:text-shadow-md text-pretty"
+    >
+      Técnica en Producción Digital y emprendedora en fotografía
+    </p>
+    <div class="mt-8">
+      <svg
+        class="w-6 h-6 transition-transform animate-bounce drop-shadow-[0_.5px_1px_rgba(60,0,30)] mt-10 dark:drop-shadow-[0_1px_10px_rgba(246,241,104)]"
+        fill="none"
+        stroke="url(#gold)"
+        stroke-width="2.5"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <defs>
+          <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#f9e79f"></stop>
+            <stop offset="20%" stop-color="#f1c40f"></stop>
+            <stop offset="40%" stop-color="#f7f56f"></stop>
+            <stop offset="45%" stop-color="#f2f26f"></stop>
+            <stop offset="80%" stop-color="#d4ac0d"></stop>
+            <stop offset="100%" stop-color="#b7950b"></stop>
+          </linearGradient>
+        </defs>
+        <path
+          d="M12 5v14m-6-6l6 6 6-6"
+          stroke-linecap="round"
+          stroke-linejoin="round"></path>
+      </svg>
+    </div>
+  </div>
+  <div class="w-full h-5xl flex flex-col items-center gap-3 mb-10">
+    <Bento />
+    <a
+      href="/galeria"
+      class="flex items-center justify-center text-center px-2 py-1 gap-2 font-medium text-3xl transition-all hover:scale-105 link-gallery-underline group will-change-transform"
+    >
+      <span>ver galería</span>
+      <svg
+        class="w-4 h-4 transition-transform animate-move-right group-hover:translate-x-1 arrow-gallery"
+        fill="none"
+        stroke-width="3"
+        viewBox="0 -2.5 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M5 12h14M13 6l6 6-6 6"
+          stroke-linecap="round"
+          stroke-linejoin="round"></path>
+      </svg>
+    </a>
+  </div>
+
+  <About id="about" />
+</section>
+
+<style>
+  /* Flecha para tema claro */
+  .arrow-gallery {
+    stroke: #5a002d;
+    filter: drop-shadow(0 3px 20px rgba(90, 0, 45, 0.9));
+    -webkit-text-stroke: 0.5px rgba(90, 0, 45, 0.56);
+    transition: all 0.3s ease;
+  }
+
+  /* Flecha para tema oscuro - usar mayor especificidad */
+  :global(.dark) .arrow-gallery {
+    stroke: #ffecf6 !important;
+    filter: drop-shadow(0 3px 20px rgba(255, 210, 233, 0.6)) !important;
+    -webkit-text-stroke: 0.5px rgba(255, 210, 233, 0.56) !important;
+  }
+</style>

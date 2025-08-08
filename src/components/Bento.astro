@@ -1,0 +1,62 @@
+---
+import "@styles/global.css";
+import "photoswipe/style.css";
+import { getImageData } from "src/scripts/getImageDimension";
+
+const imagePaths = [
+  "images/Nimi1.jpg",
+  "images/Nimi2.jpg",
+  "images/Nimi3.jpg",
+  "images/Nimi4.jpg",
+];
+
+const images = imagePaths.map(getImageData);
+---
+
+<section
+  id="gallery"
+  class="pswp-gallery grid grid-cols-3 gap-2 lg:max-h-xl lg:max-w-4xl lg:w-full px-10 lg:px-0 will-change-transform"
+>
+  {
+    images.map((img, index) => (
+      <a
+        href={img.src}
+        id={`Nimi-${index + 1}`}
+        class={`pswp-img shadow-lg transform hover:shadow-xl hover:scale-101 transition-all duration-200 ${index === 1 || index === 2 ? "col-span-2" : "col-span-1"} will-change-transform`}
+        data-pswp-width={img.width}
+        data-pswp-height={img.height}
+        data-pswp-src={img.src}
+        target="_blank"
+      >
+        <img
+          src={img.src}
+          alt={`Nimi-${index + 1}`}
+          class="rounded-xs h-full object-cover aspect-[4/3]"
+          width={img.width}
+          height={img.height}
+          loading="lazy"
+          decoding="async"
+        />
+      </a>
+    ))
+  }
+</section>
+
+<script>
+  import PhotoSwipeLightbox from "photoswipe/lightbox";
+
+  const options = {
+    gallery: ".pswp-gallery",
+    children: "a",
+    showHideAnimationType: "fade",
+    initialZoomLevel: "fit",
+    secondaryZoomLevel: 1.5,
+    maxZoomLevel: 2,
+    pswpModule: () => import("photoswipe"),
+    showAnimationDuration: 200,
+    hideAnimationDuration: 200,
+  };
+
+  const lightbox = new PhotoSwipeLightbox(options);
+  lightbox.init();
+</script>

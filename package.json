@@ -9,6 +9,23 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.12.0"
+    "@datocms/astro": "^0.6.2",
+    "@datocms/cda-client": "^0.2.7",
+    "@fontsource-variable/quicksand": "^5.2.8",
+    "@fontsource/love-light": "^5.2.6",
+    "@tailwindcss/vite": "^4.1.11",
+    "astro": "^5.12.0",
+    "astro-swiper": "^1.0.1",
+    "dotenv": "^17.2.1",
+    "graphql-request": "^7.2.0",
+    "image-size": "^2.0.2",
+    "photoswipe": "^5.4.4",
+    "sharp": "^0.34.3",
+    "tailwind-scrollbar": "^4.0.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.11"
   }
 }
