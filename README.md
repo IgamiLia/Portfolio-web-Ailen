@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 TAREAS COMPLETAS (10)
 
 ✅ Crear el inicio con sus datos
@@ -193,3 +194,7 @@ Integrar Google Analytics 4 o alternativa sin cookies
 Verificar datos estructurados en Google con Rich Results Test // https://search.google.com/test/rich-results
 
 Verificar el dominio en Search Console y enviar el sitemap
+=======
+# Portfolio-web-Ailen
+Portfolio web de Ailén Braga
+>>>>>>> 4e32abae2d73973bbd14850c01052a1e95f7c9e7
